@@ -1,0 +1,44 @@
+{% extends "pizzas/base.html" %}
+
+
+{% block content %}
+
+<p><h2>Pizza: {{ pizza }}</h2> </p>
+
+
+<div style="float: left"><img src= {{url}} style="width:20%; height:auto" /></div>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+
+
+<ul>
+    {% for t in toppings %}
+
+    <li><h3>{{ t.topping_name }}</h3> </li>
+    
+
+    {% empty %}
+    <li> <h4>No toppings for this pizza have been added yet.</h4></li>
+    {% endfor %}
+
+</ul>
+<br></br>
+<p>
+    <a href="{% url 'pizzas:customer_comment' pizza.id %}"><h2>Add a new comment</h2></a>
+</p>
+
+<ul>
+    {% for c in comment %}
+    <li>
+        <h4>"{{c.comment}}"</h4>
+    </li>    
+    {% empty %}
+    <li><h4>No Comments Available... I suppose everyone was left speechless :)</h4></li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
